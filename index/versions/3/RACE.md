@@ -12,7 +12,7 @@ Trieda definuje REST endpointy pre preteky — zoznam, detail, prihlasovanie/odh
 | ------ | ----------------------------------- | -------------------- | ---- |
 | GET    | `/races`                            | `races`              | nie  |
 | ANY    | `/race/`                            | `warn_race_required` | nie  |
-| GET    | `/race/{race_id}`                   | `detail`             | nie  |
+| GET    | `/race/{race_id}`                   | `detail`             | áno  |
 | GET    | `/race/{race_id}/redirect`          | `redirect`           | nie  |
 | GET    | `/race/{race_id}/relations`         | `relations`          | áno  |
 | POST   | `/race/{race_id}/signin/{user_id}`  | `signin`             | áno  |
