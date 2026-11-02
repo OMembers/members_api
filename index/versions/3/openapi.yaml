@@ -752,7 +752,6 @@ paths:
       tags: [Race]
       operationId: getClubRaceRaceId
       summary: Race detail, with the list of signed-in participants.
-      security: []
       parameters:
         - $ref: "#/components/parameters/Club"
         - $ref: "#/components/parameters/RaceId"
@@ -762,6 +761,8 @@ paths:
           content:
             application/json:
               schema: { $ref: "#/components/schemas/RaceDetail" }
+        "401":
+          $ref: "#/components/responses/Unauthorized"
         "404":
           $ref: "#/components/responses/NotFound"
 
