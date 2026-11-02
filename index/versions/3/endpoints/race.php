@@ -26,10 +26,10 @@ class Race implements Endpoint {
 
             Router::form("/", [static::class, "warn_race_required"]);
 
+            Router::get("/{race_id}", [static::class, "detail"])->where($race_id);
             Router::get("/{race_id}/redirect", [static::class, "redirect"])->where($race_id);
 
             Router::group(["middleware" => AuthRequired::class], function () use ($race_id, $user_id) {
-                Router::get("/{race_id}", [static::class, "detail"])->where($race_id);
                 Router::get("/{race_id}/relations", [static::class, "relations"])->where($race_id);
                 Router::post("/{race_id}/signin/{user_id}", [static::class, "signin"])->where($race_id + $user_id);
                 Router::post("/{race_id}/signout/{user_id}", [static::class, "signout"])->where($race_id + $user_id);
@@ -82,8 +82,6 @@ class Race implements Endpoint {
                 user.prijmeni AS surname,
                 user.reg,
                 zavxus.kat AS category,
-                zavxus.pozn AS note,
-                zavxus.pozn_in AS note_internal,
                 zavxus.transport,
                 zavxus.sedadel AS transport_shared,
                 zavxus.ubytovani AS accommodation,

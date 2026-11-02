@@ -564,8 +564,6 @@ paths:
           content:
             application/json:
               schema: { $ref: "#/components/schemas/Device" }
-        "401":
-          $ref: "#/components/responses/Unauthorized"
         "403":
           $ref: "#/components/responses/Forbidden"
     delete:
@@ -816,7 +814,8 @@ paths:
           application/json:
             schema:
               type: object
-              required: [category, note, note_internal, transport, accommodation]
+              required:
+                [category, note, note_internal, transport, accommodation]
               properties:
                 category: { type: string, description: "Required, non-empty." }
                 note: { type: string, nullable: true }
@@ -1196,7 +1195,11 @@ components:
       type: object
       properties:
         code: { type: integer, example: 404 }
-        message: { type: string, example: 'Route not found: "/api/3/spe/this-triggers-not-found-error/"' }
+        message:
+          {
+            type: string,
+            example: 'Route not found: "/api/3/spe/this-triggers-not-found-error/"',
+          }
 
     Club:
       type: object
@@ -1292,7 +1295,8 @@ components:
         note: { type: string, nullable: true }
         amount: { type: integer }
         date: { type: string, format: date }
-        storno: { type: integer, nullable: true, description: "1 or null, never 0." }
+        storno:
+          { type: integer, nullable: true, description: "1 or null, never 0." }
         storno_user_id: { type: integer, nullable: true }
         storno_sort_name: { type: string, nullable: true }
         storno_date: { type: string, format: date, nullable: true }
@@ -1361,7 +1365,12 @@ components:
         email: { type: string, format: email, nullable: true }
         gender: { type: string, nullable: true }
         birth_date: { type: string, format: date, nullable: true }
-        birth_number: { type: string, nullable: true, description: "Czech/Slovak birth number (sensitive)." }
+        birth_number:
+          {
+            type: string,
+            nullable: true,
+            description: "Czech/Slovak birth number (sensitive).",
+          }
         nationality: { type: string, nullable: true }
         address: { type: string, nullable: true }
         city: { type: string, nullable: true }
@@ -1531,7 +1540,8 @@ components:
       type: object
       description: All fields optional.
       properties:
-        editor_user_id: { type: integer, description: "Maps to id_users_editor." }
+        editor_user_id:
+          { type: integer, description: "Maps to id_users_editor." }
         user_id: { type: integer, description: "Maps to id_users_user." }
         race_id: { type: integer, description: "Maps to id_zavod." }
         amount: { type: integer }

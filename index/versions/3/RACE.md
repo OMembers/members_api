@@ -12,7 +12,7 @@ Trieda definuje REST endpointy pre preteky — zoznam, detail, prihlasovanie/odh
 | ------ | ----------------------------------- | -------------------- | ---- |
 | GET    | `/races`                            | `races`              | nie  |
 | ANY    | `/race/`                            | `warn_race_required` | nie  |
-| GET    | `/race/{race_id}`                   | `detail`             | áno  |
+| GET    | `/race/{race_id}`                   | `detail`             | nie  |
 | GET    | `/race/{race_id}/redirect`          | `redirect`           | nie  |
 | GET    | `/race/{race_id}/relations`         | `relations`          | áno  |
 | POST   | `/race/{race_id}/signin/{user_id}`  | `signin`             | áno  |
@@ -47,7 +47,7 @@ Vráti zoznam pretekov od zadaného dátumu.
 Vráti detail pretekov + zoznam prihlásených účastníkov.
 
 - Základ: `RaceUtils::get_race_info($race_id)`.
-- Rozšírené o kľúč `everyone` — pole všetkých prihlásených na dané preteky (tabuľka `TBL_ZAVXUS`), s kategóriou, poznámkami, dopravou, ubytovaním a SI-čipom (buď vlastný čip účastníka, alebo prepísaný pre konkrétne preteky).
+- Rozšírené o kľúč `everyone` — pole všetkých prihlásených na dané preteky (tabuľka `TBL_ZAVXUS`), s kategóriou, dopravou, ubytovaním a SI-čipom (buď vlastný čip účastníka, alebo prepísaný pre konkrétne preteky).
 
 ### `relations($race_id)`
 
