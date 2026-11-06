@@ -23,8 +23,9 @@ class Clubs {
         $result = [];
 
         foreach (\Manifest::$available_clubs as $clubname) {
-            // null values are ignored by php
-            $result[] = static::info($clubname);
+            if ($info = static::info($clubname)) {
+                $result[] = $info;
+            }
         }
 
         return $result;
