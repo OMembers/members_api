@@ -1249,6 +1249,14 @@ components:
         categories:
           type: array
           items: { type: string }
+        leader:
+          type: object
+          nullable: true
+          description: Race leader (vedoucí), `null` when not set.
+          properties:
+            user_id: { type: integer }
+            name: { type: string }
+            surname: { type: string }
 
     RaceParticipant:
       type: object

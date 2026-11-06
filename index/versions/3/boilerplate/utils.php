@@ -154,6 +154,11 @@ class RaceUtils {
             $link = "http://" . $link;
         }
 
+        $leader = null;
+        if (Config::$g_enable_race_boss && $result["vedouci"] != 0) {
+            $leader = Database::fetch_assoc("SELECT `id` AS `user_id`, `jmeno` AS `name`, `prijmeni` AS `surname` FROM `" . Tables::$TBL_USER . "` WHERE `id` = ?", $result["vedouci"]);
+        }
+
         return [
             "race_id" => $result["id"],
 
@@ -180,6 +185,9 @@ class RaceUtils {
 
             // explode returns [""] on empty list
             "categories" => $result["kategorie"] == "" ? [] : explode(";", $result["kategorie"]),
+
+            // race leader (vedouci), null when not set
+            "leader" => $leader,
         ];
     }
 
